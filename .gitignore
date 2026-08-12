@@ -1,0 +1,13 @@
+# Documents
+*.docx
+*.pdf
+
+# OS
+Thumbs.db
+.DS_Store
+
+# IDE
+.vscode/
+
+# Dependencies (if any)
+node_modules/
