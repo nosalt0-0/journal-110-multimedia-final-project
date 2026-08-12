@@ -9,5 +9,8 @@ Thumbs.db
 # IDE
 .vscode/
 
+# Unused assets
+assets/assets 2/
+
 # Dependencies (if any)
 node_modules/
