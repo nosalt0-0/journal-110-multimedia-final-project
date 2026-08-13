@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Public Perceptions of BART Today</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div id="bg-container" aria-hidden="true">
@@ -60,6 +61,16 @@
             financial deficits, slow ridership recovery, and public safety concerns at stations and on trains.
             We interviewed local commuters to capture their views of the rail system.
           </p>
+          <p>
+            The numbers paint a stark picture: daily ridership plummeted from roughly 410,000 before the
+            pandemic to just 25,000 at its lowest. Today, it hovers around 190,000 to 200,000—less than half
+            of its former peak. This slow recovery has triggered a fiscal cliff. Before 2020, BART funded nearly
+            67% of its operations through ticket sales; today, that model leaves the agency facing a staggering
+            $375 million budget deficit.
+          </p>
+          <div class="chart-container">
+            <canvas id="ridership-chart" aria-label="Line chart showing BART's average daily ridership drop from 2019 to 2026" role="img"></canvas>
+          </div>
         </div>
       </div>
     </section>
@@ -109,7 +120,10 @@
           <p>
             Many riders said BART has upgraded its facilities and improved overall cleanliness in
             recent years. Even so, cleanliness and safety remain the two areas they most want the
-            agency to improve. They suggested increasing the visible security presence at stations
+            agency to improve. This sentiment is mirrored in BART’s latest official Customer Satisfaction Survey.
+            While overall satisfaction has rebounded to 73% (the highest in recent years), riders consistently
+            ranked train and station cleanliness, personal safety, and addressing homelessness as their top
+            priorities for improvement. They suggested increasing the visible security presence at stations
             and on trains to better protect passengers.
           </p>
           <p>
@@ -137,6 +151,15 @@
             rail network to extend throughout the Bay Area, reducing reliance on private cars while
             providing affordable, inclusive transit access to local communities.
           </p>
+          <p>
+            BART is already taking aggressive steps to address these concerns, most notably with a $90 million
+            rollout of Next-Generation Fare Gates across its 50 stations. These new gates are designed to deter
+            fare evasion—saving an estimated $10 million annually—while significantly reducing vandalism inside
+            paid areas.
+          </p>
+          <div class="chart-container chart-container--doughnut">
+            <canvas id="farebox-chart" aria-label="Doughnut chart comparing BART ticket-sales reliance before the pandemic and today" role="img"></canvas>
+          </div>
           <p>
             Riders said they hope BART can establish a sustainable financial framework with greater
             government funding. Many are pinning their hopes on the regional transit ballot measure

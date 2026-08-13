@@ -14,3 +14,4 @@ assets/assets 2/
 
 # Dependencies (if any)
 node_modules/
+.vercel

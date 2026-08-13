@@ -218,6 +218,143 @@ stationData.forEach(function (station) {
     });
   }
 
+  /* Narrative data visualizations */
+  if (typeof Chart !== "undefined") {
+    Chart.defaults.color = "#aeb8c7";
+    Chart.defaults.font.family = '"Segoe UI", system-ui, sans-serif';
+
+    var ridershipCanvas = document.getElementById("ridership-chart");
+    if (ridershipCanvas) {
+      var ridershipContext = ridershipCanvas.getContext("2d");
+      var ridershipGradient = ridershipContext.createLinearGradient(0, 0, 0, 280);
+      ridershipGradient.addColorStop(0, "rgba(0, 153, 204, 0.42)");
+      ridershipGradient.addColorStop(1, "rgba(0, 153, 204, 0.02)");
+
+      new Chart(ridershipContext, {
+        type: "line",
+        data: {
+          labels: ["2019 (Pre-Pandemic)", "2020 (Low Point)", "2024", "2026 (Current)"],
+          datasets: [{
+            label: "Average daily riders",
+            data: [410000, 25000, 170000, 195000],
+            borderColor: "#00b8f0",
+            backgroundColor: ridershipGradient,
+            fill: true,
+            borderWidth: 3,
+            pointRadius: 4,
+            pointHoverRadius: 6,
+            pointBackgroundColor: "#f7c600",
+            pointBorderColor: "#f7f9fb",
+            pointBorderWidth: 2,
+            tension: 0.35
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: { duration: 900 },
+          plugins: {
+            title: {
+              display: true,
+              text: "BART Average Daily Ridership Drop",
+              color: "#f0f2f5",
+              font: { size: 14, weight: "600" },
+              padding: { bottom: 14 }
+            },
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: "rgba(10, 15, 23, 0.94)",
+              titleColor: "#f0f2f5",
+              bodyColor: "#c8d0dc",
+              callbacks: {
+                label: function (context) {
+                  return context.dataset.label + ": " + context.parsed.y.toLocaleString();
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: "rgba(255, 255, 255, 0.07)" },
+              ticks: { color: "#aeb8c7", maxRotation: 0, autoSkipPadding: 12 }
+            },
+            y: {
+              beginAtZero: true,
+              suggestedMax: 450000,
+              grid: { color: "rgba(255, 255, 255, 0.09)" },
+              ticks: {
+                color: "#aeb8c7",
+                callback: function (value) { return (value / 1000) + "k"; }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    var fareboxCanvas = document.getElementById("farebox-chart");
+    if (fareboxCanvas) {
+      new Chart(fareboxCanvas.getContext("2d"), {
+        type: "doughnut",
+        data: {
+          labels: ["Ticket sales", "Other funding"],
+          datasets: [
+            {
+              label: "Pre-Pandemic",
+              data: [67, 33],
+              backgroundColor: ["#00a9df", "rgba(163, 177, 194, 0.3)"],
+              borderColor: ["#00a9df", "rgba(163, 177, 194, 0.3)"],
+              borderWidth: 2
+            },
+            {
+              label: "Current",
+              data: [40, 60],
+              backgroundColor: ["#f7c600", "rgba(163, 177, 194, 0.52)"],
+              borderColor: ["#f7c600", "rgba(163, 177, 194, 0.52)"],
+              borderWidth: 2
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: "46%",
+          animation: { animateRotate: true, duration: 900 },
+          plugins: {
+            title: {
+              display: true,
+              text: "Farebox Recovery Ratio",
+              color: "#f0f2f5",
+              font: { size: 14, weight: "600" },
+              padding: { bottom: 10 }
+            },
+            subtitle: {
+              display: true,
+              text: "Outer ring: Pre-Pandemic · Inner ring: Current",
+              color: "#aeb8c7",
+              font: { size: 11 },
+              padding: { bottom: 8 }
+            },
+            legend: {
+              position: "bottom",
+              labels: { color: "#c8d0dc", boxWidth: 12, padding: 14 }
+            },
+            tooltip: {
+              backgroundColor: "rgba(10, 15, 23, 0.94)",
+              titleColor: "#f0f2f5",
+              bodyColor: "#c8d0dc",
+              callbacks: {
+                label: function (context) {
+                  return context.dataset.label + " — " + context.label + ": " + context.parsed + "%";
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+  }
+
   /* ── Section Video Fullscreen ── */
   var expandIcon =
     '<svg class="icon-enter" viewBox="0 0 24 24" aria-hidden="true">' +

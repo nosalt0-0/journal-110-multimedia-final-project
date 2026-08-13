@@ -305,6 +305,31 @@ a {
   margin-bottom: 0;
 }
 
+/* ===== Narrative Data Charts ===== */
+.chart-container {
+  position: relative;
+  width: 100%;
+  min-height: 260px;
+  margin-top: 1.75rem;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(10, 15, 23, 0.55);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.chart-container--doughnut {
+  max-width: 390px;
+  min-height: 290px;
+}
+
+.chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .section__media {
   position: relative;
   border-radius: 12px;
