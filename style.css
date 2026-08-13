@@ -252,6 +252,7 @@ a {
 .hero__content {
   position: relative;
   z-index: 2;
+  width: min(100%, 1220px);
   text-align: center;
   padding: 0 1.5rem;
   animation: heroFadeIn 1.2s var(--transition) both;
@@ -266,17 +267,23 @@ a {
 }
 
 .hero__title {
-  font-size: clamp(2.4rem, 6vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  max-width: 1180px;
+  margin: 0 auto;
+  font-size: clamp(2.55rem, 5.4vw, 5.6rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  text-shadow: 0 5px 34px rgba(0, 0, 0, 0.62);
 }
 
 .hero__subtitle {
-  margin-top: 1.25rem;
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  color: var(--text-secondary);
+  max-width: 850px;
+  margin: 1.5rem auto 0;
+  color: #dedede;
+  font-size: clamp(1.18rem, 2vw, 1.5rem);
+  font-weight: 450;
+  line-height: 1.55;
+  text-wrap: balance;
 }
 
 .hero__scroll {
@@ -496,16 +503,92 @@ a {
   margin-bottom: 0;
 }
 
+/* On larger screens, text scrolls naturally while its paired film remains in view for that chapter. */
+@media (min-width: 769px) {
+  .section--split-scroll .section__inner {
+    height: auto;
+    align-items: start;
+  }
+
+  .section--split-scroll .section__text {
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .section--split-scroll .section__media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: clamp(1rem, 8vh, 5rem);
+    align-self: start;
+    min-width: 0;
+    background: #06080c;
+  }
+
+  .section--split-scroll .section__video {
+    width: 100%;
+    height: auto;
+    max-height: 78vh;
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+}
+
 /* ===== Ghost Station Debate Gallery ===== */
 .section--dilemma .section__inner {
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
   align-items: center;
 }
 
 .dilemma-gallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  position: relative;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.dilemma-gallery::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.28) 10%, rgba(255, 255, 255, 0.28) 90%, transparent);
+  pointer-events: none;
+}
+
+.dilemma-gallery__column {
+  display: grid;
+  grid-template-rows: auto repeat(2, minmax(0, 1fr));
+  gap: clamp(0.8rem, 1.4vw, 1.1rem);
+  min-width: 0;
+}
+
+.dilemma-gallery__column-label {
+  margin: 0;
+  padding-bottom: 0.65rem;
+  border-bottom: 2px solid #41c8f5;
+  color: #f1f6fa;
+  font-size: clamp(0.72rem, 1vw, 0.86rem);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.dilemma-gallery__column-label span {
+  display: block;
+  margin-top: 0.26rem;
+  color: #9eacbb;
+  font-size: 0.67em;
+  font-weight: 650;
+  letter-spacing: 0.07em;
+}
+
+.dilemma-gallery__column--suburban .dilemma-gallery__column-label {
+  border-bottom-color: #a5adb7;
 }
 
 .dilemma-gallery__figure {
@@ -516,13 +599,37 @@ a {
   border-radius: 12px;
   background: rgba(12, 17, 25, 0.7);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.5s ease-out;
 }
 
 .dilemma-gallery__figure img {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  opacity: 1;
+  transform: scale(1);
+  transform-origin: center;
+  will-change: transform, opacity, filter;
+  transition: all 0.5s ease-out;
+}
+
+/* Crowded stations press gently forward; quieter stations slowly recede. */
+.dilemma-gallery__figure--crowded img {
+  animation: appress-zoom 20s linear infinite alternate;
+}
+
+.dilemma-gallery__figure--empty img {
+  animation: desolate-shrink 30s linear infinite alternate;
+}
+
+@keyframes appress-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+@keyframes desolate-shrink {
+  from { transform: scale(1); }
+  to { transform: scale(0.98); }
 }
 
 .dilemma-gallery__figure::after {
@@ -552,11 +659,19 @@ a {
 
 .dilemma-gallery__figure:hover {
   box-shadow: 0 18px 34px rgba(0, 0, 0, 0.38);
+  z-index: 1;
 }
 
 .dilemma-gallery__figure:hover img {
-  filter: saturate(1.1);
-  transform: scale(1.03);
+  animation-play-state: paused;
+  filter: saturate(1.16) contrast(1.06) drop-shadow(0 12px 16px rgba(0, 0, 0, 0.42));
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.dilemma-gallery:has(.dilemma-gallery__figure:hover) .dilemma-gallery__figure:not(:hover) img {
+  filter: blur(1px) saturate(0.72);
+  opacity: 0.5;
 }
 
 /* ===== Narrative Data Charts ===== */
@@ -612,10 +727,12 @@ a {
 }
 
 .section__video {
+  display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  background-color: var(--bg-card);
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  background-color: #06080c;
 }
 
 .section__fullscreen {
@@ -1269,10 +1386,6 @@ a {
     line-height: 1.8;
   }
 
-  .section__video {
-    aspect-ratio: 16 / 10;
-  }
-
   .data-panel {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -1308,6 +1421,11 @@ a {
 
 @media (prefers-reduced-motion: reduce) {
   .bg-container__image {
+    transition: none;
+  }
+
+  .dilemma-gallery__figure img {
+    animation: none;
     transition: none;
   }
 
