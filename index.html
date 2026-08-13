@@ -44,6 +44,30 @@
   </header>
 
   <main>
+    <section class="section section--leading fade-in" id="section-leading" data-background="0">
+      <div class="leading-card">
+        <span class="leading-tag">Crisis &amp; Controversy</span>
+        <h2>The Fiscal Cliff vs. Transit Equity: BART’s High-Stakes Battle</h2>
+        <p>
+          Facing a staggering <span class="stat-highlight">$375 million budget deficit</span>, Bay Area Rapid Transit (BART) stands on the
+          precipice of a historic crisis. As ridership hovers at less than half of pre-pandemic levels,
+          local voters face a high-stakes regional tax ballot measure.
+        </p>
+        <p>
+          According to <a href="https://www.bart.gov/about/financials/crisis" target="_blank" rel="noopener noreferrer">BART’s official financial crisis warnings</a>,
+          if taxpayers reject the proposed tax increase, the agency will be forced to trigger an aggressive
+          'Alternative Service Plan'—shutting down up to <span class="stat-highlight">15 underutilized suburban stations</span> and slashing evening
+          services starting in 2027. As <a href="https://www.smartcitiesdive.com/news/san-francisco-bart-caltrain-fiscal-cliff/805521/" target="_blank" rel="noopener noreferrer">industry analyses of the looming fiscal cliff</a>
+          highlight, this crisis has ignited a fierce debate across the Bay Area: Should taxpayers continue
+          subsidizing low-density 'ghost stations' to preserve transit equity, or must BART restructure its
+          priorities to survive?
+        </p>
+        <p class="leading-card__bridge summary-quote">
+          <strong>Amidst this uncertainty, this project focuses on the voices of everyday riders—exploring their direct evaluations of BART today and their visions for the transit network's future.</strong>
+        </p>
+      </div>
+    </section>
+
     <!-- Scrollytelling 01: Introduction — video left, text right -->
     <section class="section fade-in" id="section-intro" data-background="0">
       <div class="section__inner section__inner--reverse">
@@ -72,11 +96,11 @@
             We interviewed local commuters to capture their views of the rail system.
           </p>
           <p>
-            The numbers paint a stark picture: daily ridership plummeted from roughly 410,000 before the
+            The numbers paint a stark picture: daily ridership plummeted from roughly <span class="stat-highlight">410,000 riders</span> before the
             pandemic to just 25,000 at its lowest. Today, it hovers around 190,000 to 200,000—less than half
             of its former peak. This slow recovery has triggered a fiscal cliff. Before 2020, BART funded nearly
             67% of its operations through ticket sales; today, that model leaves the agency facing a staggering
-            $375 million budget deficit.
+            <span class="stat-highlight">$375 million budget deficit</span>.
           </p>
           <div class="chart-container">
             <canvas id="ridership-chart" aria-label="Line chart showing BART's average daily ridership drop from 2019 to 2026" role="img"></canvas>
@@ -110,7 +134,7 @@
         </div>
         <div class="section__media">
           <video class="section__video" autoplay muted loop playsinline>
-            <source src="assets/accessibility%202.mp4" type="video/mp4">
+            <source src="Accessibility%202%20new%20version.mp4" type="video/mp4">
           </video>
         </div>
       </div>
@@ -121,7 +145,7 @@
       <div class="section__inner section__inner--reverse">
         <div class="section__media">
           <video class="section__video" autoplay muted loop playsinline>
-            <source src="assets/riders.mp4" type="video/mp4">
+            <source src="riders%20new%20version.mp4" type="video/mp4">
           </video>
         </div>
         <div class="section__text">
@@ -159,7 +183,7 @@
           <p>
             A stark visual contrast defines today's BART system. While urban hubs like Montgomery Street in
             San Francisco's Financial District bustle with high-density crowds, suburban stops like Pittsburg
-            Center and North Concord remain nearly deserted during peak hours, averaging only around 500 daily exits.
+            Center and North Concord remain nearly deserted during peak hours, averaging only around <span class="stat-highlight">500 daily exits</span>.
           </p>
           <p>
             This disparity brings a difficult question to the forefront: should taxpayers continue to fully
@@ -278,31 +302,43 @@
     <div class="cta-section__inner">
       <p class="cta-section__eyebrow">Stay informed</p>
       <h2 id="cta-heading">The future of Bay Area transit depends on public engagement.</h2>
-      <a class="cta-section__button" href="https://mtc.ca.gov/funding/regional-measure" target="_blank" rel="noopener noreferrer">
-        Learn More About the Regional Transit Ballot Measure
+      <a class="cta-section__button" href="https://www.bart.gov/" target="_blank" rel="noopener noreferrer">
+        bart.gov | Bay Area Rapid Transit | Bay Area Rapid Transit
         <span aria-hidden="true">→</span>
       </a>
     </div>
   </section>
 
-  <footer class="footer">
+  <section class="footer-nav" aria-label="Footer navigation">
     <p>Multimedia Final Project · Public Perceptions of BART Today</p>
     <a href="#top">Back to Top</a>
-  </footer>
+  </section>
 
-  <footer class="academic-disclaimer">
-    <div class="disclaimer-container">
-      <h4>Statement of Informed Consent &amp; Academic Use</h4>
-      <p>
-        All interviewees and participants featured in this multimedia project have been fully informed of its scope and have granted explicit consent for their audio recordings, video footage, and personal accounts to be included as source materials.
-      </p>
-      <p>
-        This project was created solely for academic and educational purposes as a final multimedia course requirement. All collected media assets and data are strictly non-commercial and will not be used for any financial gain, monetization, or commercial distribution.
-      </p>
-      <div class="copyright">
-        &copy; BART Multimedia Final Project. All rights reserved.
-      </div>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <section class="site-footer__block site-footer__block--official">
+        <h2>Official BART Resources</h2>
+        <a href="https://www.bart.gov/" target="_blank" rel="noopener noreferrer" class="footer-link">bart.gov | Bay Area Rapid Transit | Bay Area Rapid Transit</a>
+      </section>
+
+      <section class="site-footer__block site-footer__block--credits">
+        <h2>Project Credits</h2>
+        <dl class="site-footer__credits-grid">
+          <div><dt>Web Design &amp; Development</dt><dd>Jimmy Zhang</dd></div>
+          <div><dt>Video Editing &amp; Production</dt><dd>Kyren Zeng</dd></div>
+          <div><dt>Text Editing &amp; Copywriting</dt><dd>Jimmy Zhang, Summer Yu</dd></div>
+          <div><dt>Data Analysis &amp; Statistics</dt><dd>Jimmy Zhang</dd></div>
+        </dl>
+      </section>
+
+      <section class="site-footer__block site-footer__block--legal">
+        <h2>Legal &amp; Copyright</h2>
+        <p>© 2026 Jimmy Zhang, Kyren Zeng, Summer Yu. All rights reserved.</p>
+        <p>All rights, ownership, and the right of final interpretation of this website belong to Jimmy Zhang.</p>
+        <p class="site-footer__legal-note">All featured participants granted consent for their recordings and accounts to be used as source materials. This project is for academic and educational use only and is strictly non-commercial.</p>
+      </section>
     </div>
+
   </footer>
 
   <script src="script.js"></script>
