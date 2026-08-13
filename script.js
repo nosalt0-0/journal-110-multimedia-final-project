@@ -154,6 +154,39 @@ stationData.forEach(function (station) {
     });
   }
 
+  /* Thematic BART train scroll progress indicator */
+  var trainCarriage = document.querySelector(".scroll-train__carriage");
+
+  function updateScrollTrain() {
+    if (!trainCarriage) return;
+    var scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = scrollableHeight > 0 ? Math.min(window.scrollY / scrollableHeight, 1) : 0;
+    trainCarriage.style.left = "calc(" + (progress * 100) + "% - " + (progress * 1.5) + "rem)";
+  }
+
+  window.addEventListener("scroll", updateScrollTrain, { passive: true });
+  window.addEventListener("resize", updateScrollTrain);
+  updateScrollTrain();
+
+  /* Scroll-reveal transitions for narrative content */
+  var revealTargets = document.querySelectorAll("main .section__inner, main .section__header, main .data-panel");
+
+  if (revealTargets.length) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { root: null, rootMargin: "0px 0px -8% 0px", threshold: 0.16 });
+
+    revealTargets.forEach(function (target) {
+      target.classList.add("reveal-hidden");
+      revealObserver.observe(target);
+    });
+  }
+
   /* Split-flap headline animation: run once when each title enters the viewport. */
   var flapCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   var flapTargets = document.querySelectorAll("#headtitle, .section-topic, .flap-target");
@@ -219,6 +252,7 @@ stationData.forEach(function (station) {
   }
 
   /* Narrative data visualizations */
+  var narrativeCharts = [];
   if (typeof Chart !== "undefined") {
     Chart.defaults.color = "#aeb8c7";
     Chart.defaults.font.family = '"Segoe UI", system-ui, sans-serif';
@@ -230,7 +264,7 @@ stationData.forEach(function (station) {
       ridershipGradient.addColorStop(0, "rgba(0, 153, 204, 0.42)");
       ridershipGradient.addColorStop(1, "rgba(0, 153, 204, 0.02)");
 
-      new Chart(ridershipContext, {
+      narrativeCharts.push(new Chart(ridershipContext, {
         type: "line",
         data: {
           labels: ["2019 (Pre-Pandemic)", "2020 (Low Point)", "2024", "2026 (Current)"],
@@ -289,12 +323,12 @@ stationData.forEach(function (station) {
             }
           }
         }
-      });
+      }));
     }
 
     var fareboxCanvas = document.getElementById("farebox-chart");
     if (fareboxCanvas) {
-      new Chart(fareboxCanvas.getContext("2d"), {
+      narrativeCharts.push(new Chart(fareboxCanvas.getContext("2d"), {
         type: "doughnut",
         data: {
           labels: ["Ticket sales", "Other funding"],
@@ -351,8 +385,47 @@ stationData.forEach(function (station) {
             }
           }
         }
-      });
+      }));
     }
+  }
+
+  /* Accessibility control: pause or resume every video and chart animation. */
+  var mediaToggle = document.querySelector(".media-toggle");
+  var mediaIsPaused = false;
+
+  function setMediaPaused(shouldPause) {
+    var videos = document.querySelectorAll("video");
+    mediaIsPaused = shouldPause;
+
+    videos.forEach(function (video) {
+      if (shouldPause) {
+        video.pause();
+      } else {
+        video.play().catch(function () {});
+      }
+    });
+
+    narrativeCharts.forEach(function (chart) {
+      if (shouldPause) {
+        chart.stop();
+      } else {
+        chart.update();
+      }
+    });
+
+    if (mediaToggle) {
+      mediaToggle.setAttribute("aria-pressed", shouldPause ? "true" : "false");
+      mediaToggle.setAttribute("aria-label", shouldPause ? "Play all media" : "Pause all media");
+      mediaToggle.innerHTML = shouldPause
+        ? '<span aria-hidden="true">▶️</span><span class="media-toggle__label">Play Media</span>'
+        : '<span aria-hidden="true">⏸️</span><span class="media-toggle__label">Pause Media</span>';
+    }
+  }
+
+  if (mediaToggle) {
+    mediaToggle.addEventListener("click", function () {
+      setMediaPaused(!mediaIsPaused);
+    });
   }
 
   /* ── Section Video Fullscreen ── */
