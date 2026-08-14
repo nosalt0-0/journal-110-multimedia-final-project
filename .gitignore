@@ -15,3 +15,6 @@ assets/assets 2/
 # Dependencies (if any)
 node_modules/
 .vercel
+
+# Original 4K master videos (over GitHub's 100MB limit); deploy uses assets4-web copies
+assets/assets4 swtching videos/
