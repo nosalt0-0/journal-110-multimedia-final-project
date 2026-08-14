@@ -509,6 +509,29 @@ a {
   line-height: 1.65 !important;
 }
 
+.editorial-link {
+  color: #41c8f5;
+  font-weight: 650;
+  text-decoration: underline;
+  text-decoration-color: rgba(65, 200, 245, 0.72);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.editorial-link:hover {
+  color: #8cddf8;
+  text-decoration-color: currentColor;
+  background-color: rgba(0, 153, 204, 0.1);
+}
+
+.editorial-link:focus-visible {
+  outline: 2px solid #8cddf8;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 .section__text p:last-child {
   margin-bottom: 0;
 }
