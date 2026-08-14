@@ -57,11 +57,11 @@ p {
   will-change: opacity;
 }
 
-.bg-container__image:nth-child(1) { background-image: url("assets/assets%202/photo-1690781738546-524c5e41379a.avif"); }
-.bg-container__image:nth-child(2) { background-image: url("assets/assets%202/photo-1701280955564-8a3ef10cdc3c.avif"); }
-.bg-container__image:nth-child(3) { background-image: url("assets/assets%202/photo-1708557317704-c4cd2f2e41ae.avif"); }
-.bg-container__image:nth-child(4) { background-image: url("assets/assets%202/photo-1755302732363-ac4c39748898.avif"); }
-.bg-container__image:nth-child(5) { background-image: url("assets/assets%202/premium_photo-1765918653328-6037e33fe1ec.avif"); }
+.bg-container__image:nth-child(1) { background-image: url("assets/backgrounds/photo-1690781738546-524c5e41379a.avif"); }
+.bg-container__image:nth-child(2) { background-image: url("assets/backgrounds/photo-1701280955564-8a3ef10cdc3c.avif"); }
+.bg-container__image:nth-child(3) { background-image: url("assets/backgrounds/photo-1708557317704-c4cd2f2e41ae.avif"); }
+.bg-container__image:nth-child(4) { background-image: url("assets/backgrounds/photo-1755302732363-ac4c39748898.avif"); }
+.bg-container__image:nth-child(5) { background-image: url("assets/backgrounds/premium_photo-1765918653328-6037e33fe1ec.avif"); }
 .bg-container__image.is-active { opacity: 1; }
 
 .bg-container__overlay {
