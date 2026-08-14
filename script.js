@@ -194,18 +194,31 @@ stationData.forEach(function (station) {
 
   function buildFlapTitle(element) {
     var text = element.dataset.flapText || element.textContent.replace(/\s+/g, " ").trim();
+    var letters = [];
     element.dataset.flapText = text;
     element.textContent = "";
     element.classList.add("flap-ready");
 
-    return Array.prototype.map.call(text, function (character) {
-      var letter = document.createElement("span");
-      letter.className = "flap-letter" + (character === " " ? " flap-letter--space" : "");
-      letter.textContent = character === " " ? "\u00a0" : character;
-      letter.setAttribute("aria-hidden", "true");
-      element.appendChild(letter);
-      return { element: letter, character: character };
+    text.split(" ").forEach(function (word, wordIndex, words) {
+      var wordGroup = document.createElement("span");
+      wordGroup.className = "flap-word";
+      wordGroup.setAttribute("aria-hidden", "true");
+
+      Array.prototype.forEach.call(word, function (character) {
+        var letter = document.createElement("span");
+        letter.className = "flap-letter";
+        letter.textContent = character;
+        wordGroup.appendChild(letter);
+        letters.push({ element: letter, character: character });
+      });
+
+      element.appendChild(wordGroup);
+      if (wordIndex < words.length - 1) {
+        element.appendChild(document.createTextNode(" "));
+      }
     });
+
+    return letters;
   }
 
   function playFlapTitle(element) {
@@ -256,6 +269,7 @@ stationData.forEach(function (station) {
   if (typeof Chart !== "undefined") {
     Chart.defaults.color = "#aeb8c7";
     Chart.defaults.font.family = '"Segoe UI", system-ui, sans-serif';
+    Chart.defaults.font.size = 14;
 
     var ridershipCanvas = document.getElementById("ridership-chart");
     if (ridershipCanvas) {
@@ -292,7 +306,7 @@ stationData.forEach(function (station) {
               display: true,
               text: "BART Average Daily Ridership Drop",
               color: "#f0f2f5",
-              font: { size: 14, weight: "600" },
+              font: { size: 17, weight: "600" },
               padding: { bottom: 14 }
             },
             legend: { display: false },
@@ -326,52 +340,53 @@ stationData.forEach(function (station) {
       }));
     }
 
-    var fareboxCanvas = document.getElementById("farebox-chart");
-    if (fareboxCanvas) {
-      narrativeCharts.push(new Chart(fareboxCanvas.getContext("2d"), {
-        type: "doughnut",
+    var fareCanvas = document.getElementById("fare-chart");
+    if (fareCanvas) {
+      narrativeCharts.push(new Chart(fareCanvas.getContext("2d"), {
+        type: "bar",
         data: {
-          labels: ["Ticket sales", "Other funding"],
+          labels: ["Pre-Pandemic", "Current"],
           datasets: [
             {
-              label: "Pre-Pandemic",
-              data: [67, 33],
-              backgroundColor: ["#00a9df", "rgba(163, 177, 194, 0.3)"],
-              borderColor: ["#00a9df", "rgba(163, 177, 194, 0.3)"],
-              borderWidth: 2
+              label: "Fare revenue",
+              data: [67, 40],
+              backgroundColor: "rgba(0, 169, 223, 0.78)",
+              borderColor: "#46d2ff",
+              borderWidth: 1,
+              borderRadius: 7
             },
             {
-              label: "Current",
-              data: [40, 60],
-              backgroundColor: ["#f7c600", "rgba(163, 177, 194, 0.52)"],
-              borderColor: ["#f7c600", "rgba(163, 177, 194, 0.52)"],
-              borderWidth: 2
+              label: "Other funding",
+              data: [33, 60],
+              backgroundColor: "rgba(163, 177, 194, 0.48)",
+              borderColor: "rgba(210, 221, 233, 0.85)",
+              borderWidth: 1,
+              borderRadius: 7
             }
           ]
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          cutout: "46%",
-          animation: { animateRotate: true, duration: 900 },
+          animation: { duration: 900 },
           plugins: {
             title: {
               display: true,
-              text: "Farebox Recovery Ratio",
+              text: "Fare Recovery Ratio",
               color: "#f0f2f5",
-              font: { size: 14, weight: "600" },
+              font: { size: 17, weight: "600" },
               padding: { bottom: 10 }
             },
             subtitle: {
               display: true,
-              text: "Outer ring: Pre-Pandemic · Inner ring: Current",
+              text: "Share of operating funding (%)",
               color: "#aeb8c7",
-              font: { size: 11 },
+              font: { size: 13 },
               padding: { bottom: 8 }
             },
             legend: {
               position: "bottom",
-              labels: { color: "#c8d0dc", boxWidth: 12, padding: 14 }
+              labels: { color: "#c8d0dc", boxWidth: 14, padding: 16, font: { size: 14 } }
             },
             tooltip: {
               backgroundColor: "rgba(10, 15, 23, 0.94)",
@@ -379,8 +394,23 @@ stationData.forEach(function (station) {
               bodyColor: "#c8d0dc",
               callbacks: {
                 label: function (context) {
-                  return context.dataset.label + " — " + context.label + ": " + context.parsed + "%";
+                  return context.dataset.label + ": " + context.parsed.y + "%";
                 }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: "#c8d0dc" }
+            },
+            y: {
+              beginAtZero: true,
+              max: 100,
+              grid: { color: "rgba(255, 255, 255, 0.09)" },
+              ticks: {
+                color: "#aeb8c7",
+                callback: function (value) { return value + "%"; }
               }
             }
           }
