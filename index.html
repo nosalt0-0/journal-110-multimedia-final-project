@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Perceptions of BART Today</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="scroll-train" aria-hidden="true">
+    <div class="scroll-train__track"></div>
+    <span class="scroll-train__carriage">🚈</span>
+  </div>
+
+  <button class="media-toggle" type="button" aria-pressed="false" aria-label="Pause all media">
+    <span aria-hidden="true">⏸️</span>
+    <span class="media-toggle__label">Pause Media</span>
+  </button>
+
+  <div id="bg-container" aria-hidden="true">
+    <div class="bg-container__image is-active"></div>
+    <div class="bg-container__image"></div>
+    <div class="bg-container__image"></div>
+    <div class="bg-container__image"></div>
+    <div class="bg-container__image"></div>
+    <div class="bg-container__overlay"></div>
+  </div>
+  <!-- Hero: looping TOP B-roll -->
+  <header class="hero" id="top">
+    <video class="hero__video" autoplay muted loop playsinline>
+      <source src="assets/top-broll.mp4" type="video/mp4">
+    </video>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">Multimedia Final Project</p>
+      <h1 class="hero__title" id="headtitle" data-flap-text="The BART future: Packed Trains, Empty Stations, and the Battle for the Bay">The BART future: Packed Trains, Empty Stations, and the Battle for the Bay</h1>
+      <p class="hero__subtitle">From bustling urban hubs to deserted suburban platforms, everyday commuters speak out as the transit system faces its defining crossroads.</p>
+    </div>
+    <a href="#section-intro" class="hero__scroll" aria-label="Scroll down">
+      <span class="hero__scroll-text">Scroll Down</span>
+      <span class="hero__scroll-icon"></span>
+    </a>
+  </header>
+
+  <main>
+    <section class="section section--leading fade-in" id="section-leading" data-background="0">
+      <div class="leading-card">
+        <span class="leading-tag">Crisis &amp; Controversy</span>
+        <h2>The Fiscal Cliff vs. Transit Equity: BART’s High-Stakes Battle</h2>
+        <p>
+          Facing a staggering <span class="stat-highlight">$375 million budget deficit</span>, Bay Area Rapid Transit (BART) stands on the
+          precipice of a historic crisis. As ridership hovers at less than half of pre-pandemic levels,
+          local voters face a high-stakes regional tax ballot measure.
+        </p>
+        <p>
+          According to <a href="https://www.bart.gov/about/financials/crisis" target="_blank" rel="noopener noreferrer">BART’s official financial crisis warnings</a>,
+          if taxpayers reject the proposed tax increase, the agency will be forced to trigger an aggressive
+          'Alternative Service Plan'—shutting down up to <span class="stat-highlight">15 underutilized suburban stations</span> and slashing evening
+          services starting in 2027. As <a href="https://www.smartcitiesdive.com/news/san-francisco-bart-caltrain-fiscal-cliff/805521/" target="_blank" rel="noopener noreferrer">industry analyses of the looming fiscal cliff</a>
+          highlight, this crisis has ignited a fierce debate across the Bay Area: Should taxpayers continue
+          subsidizing low-density 'ghost stations' to preserve transit equity, or must BART restructure its
+          priorities to survive?
+        </p>
+        <p class="leading-card__bridge summary-quote">
+          <strong>Amidst this uncertainty, this project focuses on the voices of everyday riders—exploring their direct evaluations of BART today and their visions for the transit network's future.</strong>
+        </p>
+      </div>
+    </section>
+
+    <!-- Scrollytelling 01: Introduction — video left, text right -->
+    <section class="section section--split-scroll fade-in" id="section-intro" data-background="0">
+      <div class="section__inner section__inner--reverse">
+        <div class="section__media">
+          <video class="section__video" autoplay muted loop playsinline>
+            <source src="assets/assets4-web/accessibility-1-hd.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="section__text">
+          <span class="section__label">01 · Introduction</span>
+          <h2 class="section-topic">Background</h2>
+          <p>
+            The BART story began in 1946, not by governmental fiat but as a concept that gradually
+            evolved at informal gatherings of business and civic leaders on both sides of San Francisco Bay.
+            Facing heavy postwar migration and a resulting automobile boom, the leaders discussed ways
+            to ease mounting congestion on the bridges spanning the bay.
+          </p>
+          <p>
+            In 1947, a joint Army-Navy review board concluded that another connection between San Francisco
+            and Oakland would be needed to prevent intolerable congestion on the Bay Bridge. After years
+            of work by stakeholders, BART began formal passenger service in 1972.
+          </p>
+          <p>
+            BART now has a 54-year history. Since the COVID-19 pandemic, the system has faced structural
+            financial deficits, slow ridership recovery, and public safety concerns at stations and on trains.
+            We interviewed local commuters to capture their views of the rail system.
+          </p>
+          <p>
+            The numbers paint a stark picture: daily ridership plummeted from roughly <span class="stat-highlight">410,000 riders</span> before the
+            pandemic to just 25,000 at its lowest. Today, it hovers around 190,000 to 200,000—less than half
+            of its former peak. This slow recovery has triggered a fiscal cliff. Before 2020, BART funded nearly
+            67% of its operations through ticket sales; today, that model leaves the agency facing a staggering
+            <span class="stat-highlight">$375 million budget deficit</span>.
+          </p>
+          <h3>Why the Sudden Drop? The Structural Crisis</h3>
+          <p>The historic plunge in ridership isn't just a lingering effect of the pandemic; it’s a structural shift in the Bay Area's economy. <a href="https://www.kqed.org/news/12080707/bart-ridership-surged-while-i-80-was-closed-through-san-francisco" target="_blank" rel="noopener noreferrer" class="editorial-link">Driven by the tech sector's permanent embrace of remote and hybrid work</a>, downtown San Francisco's hollowed-out office buildings mean the once-reliable waves of peak-hour transbay commuters have vanished. Compounding the issue is BART’s unique financial structure: <a href="https://www.bart.gov/sites/default/files/2024-12/BART_FY24%20PAFR_final.pdf" target="_blank" rel="noopener noreferrer" class="editorial-link">pre-pandemic, the system relied on passenger fares to cover nearly 70% of its operating costs</a>—one of the highest ratios in the nation. When the riders disappeared, the financial foundation of the entire network collapsed.</p>
+          <div class="chart-container">
+            <canvas id="ridership-chart" aria-label="Line chart showing BART's average daily ridership drop from 2019 to 2026" role="img"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scrollytelling 02: Accessibility — text left, video right -->
+    <section class="section section--split-scroll fade-in" id="section-accessibility" data-background="1">
+      <div class="section__inner">
+        <div class="section__text">
+          <span class="section__label">02 · Accessibility</span>
+          <h2 class="section-topic">Accessibility and Convenience</h2>
+          <p>
+            For many Bay Area residents, BART remains the most practical public transit option for
+            traveling across the bay, especially for trips to the East Bay. Riders said taking BART
+            helps them avoid chronic traffic congestion on the Bay Bridge, cuts cross-county commute
+            times and eliminates the need to search for parking.
+          </p>
+          <p>
+            Many interviewees cited convenience and relatively low fares as BART's greatest strengths.
+            They also described the system as user-friendly, noting that stations near their homes
+            and destinations make travel more convenient.
+          </p>
+          <p>
+            If some stations close, the system's overall accessibility may decline, weakening the
+            transit network's ability to serve local residents. The impact would depend on which
+            stations close and each resident's transportation needs.
+          </p>
+        </div>
+        <div class="section__media">
+          <video class="section__video" autoplay muted loop playsinline>
+            <source src="assets/assets4-web/accessibility-2-hd.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scrollytelling 03: Riders — video left, text right -->
+    <section class="section section--split-scroll fade-in" id="section-riders" data-background="2">
+      <div class="section__inner section__inner--reverse">
+        <div class="section__media">
+          <video class="section__video" autoplay muted loop playsinline>
+            <source src="assets/assets4-web/riders-hd.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="section__text">
+          <span class="section__label">03 · Riders</span>
+          <h2 class="section-topic">What Commuters Want</h2>
+          <p>
+            Many riders said BART has upgraded its facilities and improved overall cleanliness in
+            recent years. Even so, cleanliness and safety remain the two areas they most want the
+            agency to improve. This sentiment is mirrored in BART’s latest official Customer Satisfaction Survey.
+            While overall satisfaction has rebounded to 73% (the highest in recent years), riders consistently
+            ranked train and station cleanliness, personal safety, and addressing homelessness as their top
+            priorities for improvement. They suggested increasing the visible security presence at stations
+            and on trains to better protect passengers.
+          </p>
+          <p>
+            Commuters also want BART to increase train frequency. Office workers specifically said
+            trains can run infrequently during morning rush hours and that more frequent service would
+            increase the system's value for daily travel.
+          </p>
+          <p>
+            Several interviewees acknowledged, however, that BART's ongoing financial deficit makes
+            such service expansions difficult at present.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scrollytelling 04: Transit — text left, video right -->
+    <!-- Scrollytelling 03.5: Transit Equity and Fiscal Responsibility -->
+    <section class="section section--dilemma fade-in" id="section-dilemma" data-background="2">
+      <div class="section__inner">
+        <div class="section__text">
+          <span class="section__label">03.5 · The Dilemma</span>
+          <h2 class="section-topic">The "Ghost Station" Debate</h2>
+          <p>
+            A stark visual contrast defines today's BART system. While urban hubs like Montgomery Street in
+            San Francisco's Financial District bustle with high-density crowds, suburban stops like Pittsburg
+            Center and North Concord remain nearly deserted during peak hours, averaging only around <span class="stat-highlight">500 daily exits</span>.
+          </p>
+          <p>
+            This disparity brings a difficult question to the forefront: should taxpayers continue to fully
+            subsidize these underutilized 'ghost stations,' or must BART restructure its service priorities to
+            prevent a regional fiscal collapse?
+          </p>
+          <h3>The Harsh Trade-off: Why Can't the Government Just Subsidize It?</h3>
+          <p>A common question from riders is why the government cannot simply cover the shortfall to keep all stations running. The reality is a perfect financial storm. <a href="https://www.bart.gov/news/articles/2026/news20260611" target="_blank" rel="noopener noreferrer" class="editorial-link">Pandemic emergency funds, which kept BART afloat for the past few years, are now running out during FY27.</a> Meanwhile, the <a href="https://calmatters.org/politics/capitol/2024/06/california-transit-bay-area-funding/" target="_blank" rel="noopener noreferrer" class="editorial-link">State of California is grappling with its own multi-billion-dollar budget deficits</a>, severely limiting any state-level bailouts.</p>
+          <p class="summary-quote">This leaves the agency with a harsh mathematical reality: without local taxpayers agreeing to a new regional sales tax, BART has no choice but to cut costs aggressively. Subsidizing low-ridership 'ghost stations' costs millions annually. For the transit agency, closing these stations is no longer a malicious choice against suburban commuters, but a desperate amputation required to save the core network.</p>
+        </div>
+
+        <div class="dilemma-gallery" aria-label="A side-by-side contrast between crowded urban hubs and quiet suburban BART stations">
+          <div class="dilemma-gallery__column dilemma-gallery__column--urban">
+            <p class="dilemma-gallery__column-label">Urban core <span>Packed trains · peak demand</span></p>
+            <figure class="dilemma-gallery__figure dilemma-gallery__figure--crowded">
+              <img src="assets/assets3/crowded-1.jpg.jpg" alt="Crowded BART station during rush hour">
+              <figcaption>Urban Hubs</figcaption>
+            </figure>
+            <figure class="dilemma-gallery__figure dilemma-gallery__figure--crowded">
+              <img src="assets/assets3/crowded-2.jpg.jpg" alt="Packed train cars at Montgomery station">
+              <figcaption>Peak-Hour Demand</figcaption>
+            </figure>
+          </div>
+
+          <div class="dilemma-gallery__column dilemma-gallery__column--suburban">
+            <p class="dilemma-gallery__column-label">Suburban edge <span>Empty platforms · low demand</span></p>
+            <figure class="dilemma-gallery__figure dilemma-gallery__figure--empty">
+              <img src="assets/assets3/empty-1.jpg.jpg" alt="Empty BART ghost station platform">
+              <figcaption>Suburban Stops</figcaption>
+            </figure>
+            <figure class="dilemma-gallery__figure dilemma-gallery__figure--empty">
+              <img src="assets/assets3/empty-2.jpg.jpg" alt="Deserted Pittsburg Center station">
+              <figcaption>Low-Ridership Service</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--split-scroll fade-in" id="section-transit" data-background="3">
+      <div class="section__inner">
+        <div class="section__text">
+          <span class="section__label">04 · Transit</span>
+          <h2 class="section-topic">The Road Ahead</h2>
+          <p>
+            In the public's ideal vision, BART should continue technological upgrades to reduce
+            unplanned service suspensions and equipment malfunctions. Residents said they want the
+            rail network to extend throughout the Bay Area, reducing reliance on private cars while
+            providing affordable, inclusive transit access to local communities.
+          </p>
+          <p>
+            BART is already taking aggressive steps to address these concerns, most notably with a $90 million
+            rollout of Next-Generation Fare Gates across its 50 stations. These new gates are designed to deter
+            fare evasion—saving an estimated $10 million annually—while significantly reducing vandalism inside
+            paid areas.
+          </p>
+          <div class="chart-container chart-container--fare">
+            <canvas id="fare-chart" aria-label="Bar chart comparing BART fare revenue and other funding before the pandemic and today" role="img"></canvas>
+          </div>
+          <p>
+            Riders said they hope BART can establish a sustainable financial framework with greater
+            government funding. Many are pinning their hopes on the regional transit ballot measure
+            scheduled for a vote in November, seeking more stable government funding.
+          </p>
+          <p>
+            Without consistent financial support, however, BART may struggle to build the comprehensive,
+            resilient rail network spanning the Bay Area that residents envision.
+          </p>
+        </div>
+        <div class="section__media">
+          <video class="section__video" autoplay muted loop playsinline>
+            <source src="assets/assets4-web/transit-hd.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Interaction: BART Map + Ridership Carousel -->
+    <section class="section section--data fade-in" id="section-data" data-background="4">
+      <div class="section__header">
+        <span class="section__label">05 · Ridership Data</span>
+        <h2 class="section-topic">Average Daily Station Ridership</h2>
+        <p>
+          Browse weekday ridership for all 49 BART stations. Use the arrows, swipe, or the
+          dropdown to explore station-level throughput alongside the full network map.
+        </p>
+      </div>
+
+      <div class="data-panel">
+        <div class="data-panel__map">
+          <div class="data-map" aria-label="Interactive BART system map">
+            <img src="assets/bart-map.jpg" alt="BART system map showing all stations across the Bay Area">
+            <div class="data-map__hotspots" aria-label="Select a station from the map"></div>
+          </div>
+        </div>
+
+        <div class="data-carousel" aria-label="Station ridership data carousel" aria-roledescription="carousel" tabindex="0">
+          <label class="data-carousel__jump" for="station-select">
+            <span class="data-carousel__jump-label">Jump to station</span>
+            <select id="station-select" class="data-carousel__select" aria-label="Select a BART station"></select>
+          </label>
+
+          <div class="data-carousel__viewport">
+            <div class="data-carousel__track"></div>
+          </div>
+
+          <div class="data-carousel__controls">
+            <button class="data-carousel__btn data-carousel__btn--prev" type="button" aria-label="Previous station">
+              <span aria-hidden="true">&#8592;</span>
+            </button>
+            <span class="data-carousel__counter" aria-live="polite">1 / 49</span>
+            <button class="data-carousel__btn data-carousel__btn--next" type="button" aria-label="Next station">
+              <span aria-hidden="true">&#8594;</span>
+            </button>
+          </div>
+          <div class="data-carousel__pagination" aria-label="Choose station slide"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="cta-section" aria-labelledby="cta-heading">
+    <div class="cta-section__inner">
+      <p class="cta-section__eyebrow">Stay informed</p>
+      <h2 id="cta-heading">Get more official information from</h2>
+      <a class="cta-section__button" href="https://www.bart.gov/" target="_blank" rel="noopener noreferrer">
+        bart.gov | Bay Area Rapid Transit | Bay Area Rapid Transit
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="footer-nav" aria-label="Footer navigation">
+    <p>Multimedia Final Project · Public Perceptions of BART Today</p>
+    <a href="#top">Back to Top</a>
+  </section>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <section class="site-footer__block site-footer__block--official">
+        <h2>Official BART Resources</h2>
+        <a href="https://www.bart.gov/" target="_blank" rel="noopener noreferrer" class="footer-link">bart.gov | Bay Area Rapid Transit | Bay Area Rapid Transit</a>
+      </section>
+
+      <section class="site-footer__block site-footer__block--credits">
+        <h2>Project Credits</h2>
+        <dl class="site-footer__credits-grid">
+          <div><dt>Web Design &amp; Development</dt><dd>Jimmy Zhang</dd></div>
+          <div><dt>Video Editing &amp; Production</dt><dd>Kyren Zeng</dd></div>
+          <div><dt>Text Editing &amp; Copywriting</dt><dd>Jimmy Zhang, Summer Yu</dd></div>
+          <div><dt>Data Analysis &amp; Statistics</dt><dd>Jimmy Zhang</dd></div>
+        </dl>
+      </section>
+
+      <section class="site-footer__block site-footer__block--legal">
+        <h2>Legal &amp; Copyright</h2>
+        <p>© 2026 Jimmy Zhang, Kyren Zeng, Summer Yu. All rights reserved.</p>
+        <p>All rights, ownership, and the right of final interpretation of this website belong to Jimmy Zhang.</p>
+        <p class="site-footer__legal-note">All featured participants granted consent for their recordings and accounts to be used as source materials. This project is for academic and educational use only and is strictly non-commercial.</p>
+      </section>
+    </div>
+
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
